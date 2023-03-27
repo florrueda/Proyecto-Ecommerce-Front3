@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import logo from '../../assets/SucuLove-logos/SucuLove-logos_transparent.png'
+import logo from '../../../assets/SucuLove-logos/SucuLove-logos_transparent.png'
 import {Link} from 'react-router-dom'
 
 const theme = createTheme();

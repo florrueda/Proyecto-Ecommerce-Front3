@@ -1,0 +1,14 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3E6765;
+    padding: 0rem 2rem;
+}
+
+.navlink {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+}

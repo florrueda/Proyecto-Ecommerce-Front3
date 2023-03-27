@@ -2,39 +2,38 @@
     "products": [
       {
         "id": 1,
-        "name": "nike 360",
-        "price": 20500,
-        "stock": 9,
-        "description": "Zapatillas de ultima generacion para el deporte",
-        "category": "deportivas",
-        "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669326932/free-metcon-4-zapatillas-de-entrenamiento-TQMCZg_fvia3m.png"
+        "name": "Lucia",
+        "price": 1000,
+        "stock": 1,
+        "img": "https://img.freepik.com/foto-gratis/disposicion-rectangular-suculentas-cactus-suculentas-plantador_1127-3108.jpg"
       },
       {
         "id": 2,
-        "name": "wilson advance",
-        "price": 14500,
-        "stock": 16,
-        "description": "Ultra livianas y cuentan con camara de aire",
-        "category": "deportivas",
-        "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430010/foc364fsakkzmausrovn.jpg"
+        "name": "Sofía",
+        "price": 1450,
+        "stock": 1,
+        "img": "https://images.unsplash.com/photo-1551893665-f843f600794e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c3VjdWxlbnRhc3xlbnwwfHwwfHw%3D&w=1000&q=80"
       },
       {
         "id": 3,
-        "name": "Puma",
-        "price": 19000,
-        "stock": 3,
-        "description": "Las clasicas zapatillas que van para cualquier momento del dia",
-        "category": "urbanas",
-        "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430165/images_lujpmr.jpg"
+        "name": "Martina",
+        "price": 500,
+        "stock": 1,
+        "img": "https://images.pexels.com/photos/2968327/pexels-photo-2968327.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       },
       {
         "id": 4,
-        "name": "Jaguar",
-        "price": 17800,
-        "stock": 7,
-        "description": "Zapatillas de ultima generacion para el deporte",
-        "category": "urbanas",
-        "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg"
+        "name": "María",
+        "price": 178,
+        "stock": 1,
+        "img": "https://img.freepik.com/foto-gratis/vista-lateral-manos-mujer-guantes-goma-ropa-blanca-sosteniendo-suculentas-o-cactus-macetas-otras-plantas-verdes_158595-7077.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Paula",
+        "price": 178,
+        "stock": 1,
+        "img": "https://media.revistaad.es/photos/60c74bf9d7d21123fd44e885/master/w_1600%2Cc_limit/150580.jpg"
       }
     ]
   }
