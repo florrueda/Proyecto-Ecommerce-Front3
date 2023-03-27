@@ -1,0 +1,9 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e7dd;
+    font-family: 'Roboto';
+    padding: 0.5rem
+}

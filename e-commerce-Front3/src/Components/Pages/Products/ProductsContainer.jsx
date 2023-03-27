@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Products from "./Products";
+import { getProducts, deleteProduct } from "../../../services/ProductsService";
+
 
 const ProductsContainer = () => {
   const [items, setItems] = useState([]);
 
   const [isChanged,setIsChanged] = useState(false)
 
+  const [cart, setCart] = useState([]);
+
   useEffect(() => {
     setIsChanged(false);
-    const productos = axios.get("http://localhost:5000/products");
+    const productos = getProducts();
     productos
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   }, [isChanged]);
 
   const deleteProductById = (id) => {
-    axios.delete(`http://localhost:5000/products/${id}`);
+    deleteProduct(id)
     setIsChanged(true);
   };
 
-  const updateProductById = (id) => {
-    axios.patch(`http://localhost:5000/products/${id}`, {
-      price: 6000,
-      name: "zapas X",
-    });
-    setIsChanged(true);
-  };
+  const addToCart = (item) => {
+    const existe = cart.some((element) => element.id === item.id)
+    if(!existe) {
+        setCart([...cart, {...item, quantity: 1}])
+    } else {
+        alert('ya existe en el carrito')
+    }
+};
 
   return (
     <Products
-      updateProductById={updateProductById}
       deleteProductById={deleteProductById}
+      addToCart={addToCart}
       items={items}
     ></Products>
   );

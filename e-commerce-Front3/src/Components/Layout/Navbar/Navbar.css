@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3E6765;
+    background-color: #648583;
     padding: 0rem 2rem;
 }
 
@@ -10,5 +10,9 @@
     color: white;
     text-decoration: none;
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.navlink:hover {
+    color: #2b4846;
 }

@@ -1,14 +1,19 @@
 import React from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 
-const CreateProduct = ({ handleChange, handleSubmit }) => {
+const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
   return (
     <div>
-    <Container maxWidth="xs">
-      <h1>Crear un nuevo producto</h1>
-      <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex",
+      <Container maxWidth="xs">
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            display: "flex",
             flexDirection: "column",
-            alignItems: "center", }}>
+            alignItems: "center",
+          }}
+        >
           <TextField
             margin="normal"
             required
@@ -16,7 +21,7 @@ const CreateProduct = ({ handleChange, handleSubmit }) => {
             id="name"
             label="Nombre del producto"
             name="name"
-            autoComplete="Nombre del producto"
+            value={productUpdated.name}
             autoFocus
             onChange={handleChange}
           />
@@ -27,7 +32,7 @@ const CreateProduct = ({ handleChange, handleSubmit }) => {
             id="price"
             label="Precio del producto"
             name="price"
-            autoComplete="Precio del producto"
+            value={productUpdated.price}
             autoFocus
             onChange={handleChange}
           />
@@ -38,7 +43,7 @@ const CreateProduct = ({ handleChange, handleSubmit }) => {
             id="stock"
             label="Stock del producto"
             name="stock"
-            autoComplete="Stock del producto"
+            value={productUpdated.stock}
             autoFocus
             onChange={handleChange}
           />
@@ -49,7 +54,7 @@ const CreateProduct = ({ handleChange, handleSubmit }) => {
             id="img"
             label="Imagen del producto"
             name="img"
-            autoComplete="Imagen del producto"
+            value={productUpdated.img}
             autoFocus
             onChange={handleChange}
           />
@@ -57,14 +62,14 @@ const CreateProduct = ({ handleChange, handleSubmit }) => {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, backgroundColor: "#3E6765"}}
+            sx={{ mt: 3, mb: 2, backgroundColor: "#3E6765" }}
           >
-            Crear
+            Editar
           </Button>
-      </Box>
+        </Box>
       </Container>
     </div>
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;
