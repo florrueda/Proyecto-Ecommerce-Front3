@@ -1,23 +1,57 @@
-import * as React from 'react';
+import * as React from "react";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Button } from "@mui/material";
 
-const Cart = ({cart}) => {
-    
-    return (
+
+
+const Cart = ({ cart, clearCart, getTotalPrice, deleteProduct }) => {
+  
+  return (
+    <div>
+      <h1>Carrito</h1>
+      <div>
+        <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Producto</TableCell>
+            <TableCell align="right">Precio</TableCell>
+            <TableCell align="right">Cantidad</TableCell>
+            <TableCell align="right">Total</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {cart.map((product) => (
+            <TableRow
+              key={product.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {product.name}
+              </TableCell>
+              <TableCell align="right">{product.price}</TableCell>
+              <TableCell align="right">{product.quantity}</TableCell>
+              
+              <TableCell align="right">{product.price * product.quantity}</TableCell>
+              <Button onClick={()=>deleteProduct(product.id)}>Eliminar producto</Button>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
         <div>
-            <h2>Carrito</h2>
-            {
-                cart.map((cart) => {
-                    return <div key={cart.id} style={{border: "solid 1px white"}} >
-                        <img src={cart.img} style={{width: '30%'}}/>
-                        <h2>{cart.name}</h2>
-                        <h3>{cart.price}</h3>
-                    </div>
-                })
-            }
-            <button onClick={() => setCart([])}>Vaciar carrito</button>
+            <h3>El total del carrito es: {getTotalPrice()}</h3>
+            <button onClick={clearCart}>Vaciar carrito</button>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default Cart;
-

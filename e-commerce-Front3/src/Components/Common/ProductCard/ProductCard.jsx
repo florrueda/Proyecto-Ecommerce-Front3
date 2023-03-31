@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import "./ProductCard.css";
+import Counter from "../Counter/Counter";
 
-const ProductCard = ({ e, deleteProductById, addToCart }) => {
+
+const ProductCard = ({ e, deleteProductById }) => {
   return (
     <div>
       <div className="card">
@@ -41,19 +43,7 @@ const ProductCard = ({ e, deleteProductById, addToCart }) => {
               Ver detalle
             </Button>
           </Link>
-          <Button
-            onClick={() => addToCart(e)}
-            variant="contained"
-            sx={{
-              mt: 3,
-              mb: 2,
-              backgroundColor: "#3E6765",
-              textDecoration: "none",
-              margin: "0.5rem",
-            }}
-          >
-            Agregar producto al carrito
-          </Button>
+        <Counter product={e}></Counter>
         </div>
       </div>
     </div>

@@ -1,20 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Cart from './Cart';
-import { getProductById } from "../../../services/ProductsService";
-import {useParams} from 'react-router-dom'
+import { CartContext } from '../../../Context/CartContext';
 
 const CartContainer = () => {
-    const {id} = useParams();
-    const [cart, setCart] = useState({})
-
-    useEffect(() => {
-        getProductById(id)
-        .then(res => setCart(res.data))
-    }, []);
+    const { cart, clearCart, getTotalPrice, deleteProduct } = useContext(CartContext);
 
     return (
         <div>
-            <Cart cart={cart}></Cart>
+            <Cart cart={cart} clearCart={clearCart} getTotalPrice={getTotalPrice} deleteProduct={deleteProduct}></Cart>
         </div>
     );
 }

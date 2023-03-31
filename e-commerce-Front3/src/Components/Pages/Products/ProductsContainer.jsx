@@ -8,8 +8,6 @@ const ProductsContainer = () => {
 
   const [isChanged,setIsChanged] = useState(false)
 
-  const [cart, setCart] = useState([]);
-
   useEffect(() => {
     setIsChanged(false);
     const productos = getProducts();
@@ -23,19 +21,9 @@ const ProductsContainer = () => {
     setIsChanged(true);
   };
 
-  const addToCart = (item) => {
-    const existe = cart.some((element) => element.id === item.id)
-    if(!existe) {
-        setCart([...cart, {...item, quantity: 1}])
-    } else {
-        alert('ya existe en el carrito')
-    }
-};
-
   return (
     <Products
       deleteProductById={deleteProductById}
-      addToCart={addToCart}
       items={items}
     ></Products>
   );
