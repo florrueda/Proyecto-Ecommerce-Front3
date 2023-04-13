@@ -16,11 +16,11 @@ const Counter = ({ product }) => {
   });
 
   const [counter, setCounter] = useState(1);
-  const { addToCart } = useContext(CartContext);
+  const {dispatch} = useContext(CartContext)
 
   const addProducts = () => {
     let object = { ...product, quantity: counter };
-    addToCart(object);
+    dispatch({type: 'ADD_TO_CART', payload: object})
   };
 
   return (

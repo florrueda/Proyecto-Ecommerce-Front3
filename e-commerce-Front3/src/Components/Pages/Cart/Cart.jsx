@@ -8,9 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "@mui/material";
 
-
-
-const Cart = ({ cart, clearCart, getTotalPrice, deleteProduct }) => {
+const Cart = ({ state, dispatch, limpiarCarrito }) => {
   
   return (
     <div>
@@ -27,7 +25,7 @@ const Cart = ({ cart, clearCart, getTotalPrice, deleteProduct }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cart.map((product) => (
+          {state.cart.map((product) => (
             <TableRow
               key={product.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -39,15 +37,15 @@ const Cart = ({ cart, clearCart, getTotalPrice, deleteProduct }) => {
               <TableCell align="right">{product.quantity}</TableCell>
               
               <TableCell align="right">{product.price * product.quantity}</TableCell>
-              <Button onClick={()=>deleteProduct(product.id)}>Eliminar producto</Button>
+              <Button onClick={()=>dispatch({type:'DELETE_BY_ID', payload:product.id})}>Eliminar producto</Button>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
         <div>
-            <h3>El total del carrito es: {getTotalPrice()}</h3>
-            <button onClick={clearCart}>Vaciar carrito</button>
+            <h3>El total del carrito es: {state.totalPrice}</h3>
+            <button onClick={limpiarCarrito}>Vaciar carrito</button>
         </div>
       </div>
     </div>
