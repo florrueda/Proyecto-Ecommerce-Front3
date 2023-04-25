@@ -6,21 +6,34 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
   Typography,
 } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./ProductCard.css";
 import Counter from "../Counter/Counter";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 
-const ProductCard = ({ e, deleteProductById }) => {
+const ProductCard = ({ e, dispatch, favs }) => {
   const navigate = useNavigate();
 
   return (
     <div>
       <ThemeProvider theme={themeContext}>
-        <Card sx={{ width: 300, height: 550 }}>
+        <Card sx={{ width: 300, height: 600 }}>
           <CardMedia component="img" alt="" height="300" image={e.img} />
+          <IconButton
+            aria-label="add to favorites"
+            onClick={() => dispatch({ type: "HANDLE_FAVORITE", payload: e })}
+            style={{backgroundColor: "white"}}
+          >
+            <FavoriteIcon
+              color={
+                favs.some((fav) => fav.id === e.id) ? "error" : "disabled"
+              }
+            />
+          </IconButton>
           <CardContent>
             <Typography
               gutterBottom
@@ -35,10 +48,7 @@ const ProductCard = ({ e, deleteProductById }) => {
             </Typography>
           </CardContent>
           <CardActions style={{ display: "flex", justifyContent: "center" }}>
-            <Button onClick={() => deleteProductById(e.id)} variant="contained">
-              Eliminar producto
-            </Button>
-
+            
             <Button
               onClick={() => navigate(`/product-detail/${e.id}`)}
               variant="contained"

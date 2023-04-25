@@ -22,9 +22,27 @@ const ProductDetailContainer = () => {
     });
   }, []);
 
+  const deleteProductById = (id) => {
+    Swal.fire({
+      title: 'Seguro quieres eliminar el producto?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Si, seguro',
+      denyButtonText: `No, me arrepiento`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('El producto se elimino con exito', '', 'success')
+        deleteDoc(doc(db, "products", id));
+      } else if (result.isDenied) {
+        Swal.fire('El producto no ha sido eliminado', '', 'info')
+      }
+    })
+    
+  }
+
     return (
         <div>
-            <ProductDetail product={product}/>
+            <ProductDetail product={product} deleteProductById={deleteProductById}/>
         </div>
     );
 }

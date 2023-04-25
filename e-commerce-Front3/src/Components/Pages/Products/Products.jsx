@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 
-const Products = ({ deleteProductById, items }) => {
+const Products = ({ items, dispatch, favs }) => {
 
   return (
     <div>
@@ -32,14 +32,15 @@ const Products = ({ deleteProductById, items }) => {
               component="div"
               align="center"
             >
-              Product Detail
+              Products
             </Typography>
           <Grid container spacing={2}>
             {items.map((e) => (
               <Grid item xs={4} md={3} key={e.id}>
                 <ProductCard
                   e={e}
-                  deleteProductById={deleteProductById}
+                  favs={favs}
+                  dispatch={dispatch}
                 ></ProductCard>
               </Grid>
             ))}
