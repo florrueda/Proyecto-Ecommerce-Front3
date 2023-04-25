@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import UpdateProductContainer from "../UpdateProduct/UpdateProduct.container";
-import { Button, Container } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { themeContext } from "../../../Context/theme";
+import Counter from "../../Common/Counter/Counter";
 
-const ProductDetail = ({ product, setIsChanged }) => {
+const ProductDetail = ({ product }) => {
   const [showForm, setShowForm] = useState(false);
 
   const showFormFunction = () => {
@@ -11,34 +14,38 @@ const ProductDetail = ({ product, setIsChanged }) => {
 
   return (
     <div>
-      <h1>Product Detail</h1>
-      <Container maxWidth="xs" style={{ display: "flex", justifyContent:"center", textAlign:"center"}}>
-      <div>
-        <img
-          src={product.img}
-          style={{ width: "200px", height: "200px" }}
-        ></img>
-        <h2>{product.name}</h2>
-        <h2>$ {product.price}</h2>
-        <h2>Cantidad: {product.stock}</h2>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2, backgroundColor: "#3E6765" }}
-          onClick={() => showFormFunction()}
+      <ThemeProvider theme={themeContext}>
+        <Typography gutterBottom variant="h2" component="div" align="center">
+          Product Detail
+        </Typography>
+        <Container
+          maxWidth="sm"
+          style={{ display: "flex", justifyContent: " space-around " }}
         >
-          Editar
-        </Button>
+          <img src={product.img} style={{ width: 200, height: "auto" }}></img>
+          <div>
+            <h2>{product.name}</h2>
+            <h2>$ {product.price}</h2>
+            <h2>Cantidad en stock: {product.stock}</h2>
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              onClick={() => showFormFunction()}
+            >
+              Editar
+            </Button>
+          </div>
+        </Container>
+        <Counter product={product}></Counter>
         {showForm ? (
           <UpdateProductContainer
             product={product}
-            setIsChanged={setIsChanged}
             setShowForm={setShowForm}
           ></UpdateProductContainer>
         ) : null}
-      </div>
-      </Container>
+      </ThemeProvider>
     </div>
   );
 };

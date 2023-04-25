@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import UpdateProduct from './UpdateProduct';
-import { updateProduct, getProductById } from "../../../services/ProductsService";
+import { collection, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
+import {useParams} from 'react-router-dom'
 
-const UpdateProductContainer = ({product, setIsChanged, setShowForm}) => {
+const UpdateProductContainer = ({product, setShowForm}) => {
 
     const [productUpdated, setProductUpdated] = useState({
         name: product.name,
@@ -11,35 +13,28 @@ const UpdateProductContainer = ({product, setIsChanged, setShowForm}) => {
         img: product.img
     });
 
-    const updateProductById = (id, product) => {
-        const update = updateProduct(id, product);
-        update.then((res) => console.log(res))
-        .catch((err) => console.log(err))
-    }
-
-
-    const handleChange = (e) => {
-        setProductUpdated({...productUpdated, [e.target.name]: e.target.value})
-    }
+    const {id} = useParams();
+    let refCollection = collection(db, "products");
+    let refDoc = doc(refCollection, id)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let data = {
+        let dataUpdate = {
+            ...productUpdated,
             name: productUpdated.name,
             price: Number(productUpdated.price),
             stock: Number(productUpdated.stock),
             img: productUpdated.img,
           };
         
-        updateProductById(product.id, data);
-        setIsChanged(true)
+        updateDoc( refDoc, dataUpdate )
         setShowForm(false)
         
     }
 
     return (
         <div>
-            <UpdateProduct handleChange={handleChange} handleSubmit={handleSubmit} productUpdated={productUpdated}></UpdateProduct>
+            <UpdateProduct handleSubmit={handleSubmit} setProductUpdated={setProductUpdated} productUpdated={productUpdated}></UpdateProduct>
         </div>
     );
 }

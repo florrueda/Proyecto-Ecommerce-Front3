@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom'
-import { createProduct } from "../../../services/ProductsService";
 import CreateProduct from './CreateProduct'
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 const CreateProductContainer = () => {
 
@@ -16,16 +17,15 @@ const CreateProductContainer = () => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        let data = {
+        let dataProduct = {
           name: newProduct.name,
           price: Number(newProduct.price),
           stock: Number(newProduct.stock),
           img: newProduct.img,
         };
 
-        const create = createProduct(data);
-        create.then((res) => console.log(res))
-        .catch((err) => console.log(err))
+        let refCollection = collection(db, "products")
+        addDoc(refCollection, dataProduct).then().catch((error) => console.log(error))
         navigate('/products')
       };
     

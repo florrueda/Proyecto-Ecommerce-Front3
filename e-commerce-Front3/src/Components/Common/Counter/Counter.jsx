@@ -1,19 +1,10 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../../Context/CartContext";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { Button } from "@mui/material";
+import {themeContext} from '../../../Context/theme'
 
 const Counter = ({ product }) => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#3E6765",
-      },
-    },
-    button: {
-      fontSize: 8,
-    },
-  });
 
   const [counter, setCounter] = useState(1);
   const {dispatch} = useContext(CartContext)
@@ -24,14 +15,14 @@ const Counter = ({ product }) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeContext}>
       <div
         style={{ display: "flex", justifyContent: "center", margin: "1rem" }}
       >
         <Button variant="outlined" style={{ margin: "1rem" }} onClick={() => setCounter(counter - 1)}>
           -
         </Button>
-        <h3 style={{ textAlign:'center' }}>{counter}</h3>
+        <h3 style={{ display: "flex", alignItems:"center" }}>{counter}</h3>
         <Button variant="outlined" style={{ margin: "1rem" }} onClick={() => setCounter(counter + 1)}>
           +
         </Button>

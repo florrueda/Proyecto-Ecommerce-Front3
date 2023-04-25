@@ -1,24 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../../Common/ProductCard/ProductCard";
-import { Button, Grid } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Button, Grid, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { themeContext } from "../../../Context/theme";
 
 const Products = ({ deleteProductById, items }) => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#3E6765",
-      },
-    },
-    button: {
-      fontSize: 8,
-    },
-  });
 
   return (
     <div>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={ themeContext}>
         <div
           style={{
             display: "flex",
@@ -35,7 +26,14 @@ const Products = ({ deleteProductById, items }) => {
         </div>
 
         <div>
-          <h1>Productos</h1>
+        <Typography
+              gutterBottom
+              variant="h2"
+              component="div"
+              align="center"
+            >
+              Product Detail
+            </Typography>
           <Grid container spacing={2}>
             {items.map((e) => (
               <Grid item xs={4} md={3} key={e.id}>

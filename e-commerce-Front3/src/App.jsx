@@ -1,7 +1,5 @@
 import "./App.css";
 import ProductsContainer from "./Components/Pages/Products/ProductsContainer";
-import SignUp from "./Components/Pages/Sign up/SignUp";
-import SignIn from "./Components/Pages/SignIn/SignIn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Pages/Home/Home";
 import Layout from "./Components/Layout/Layout";
@@ -11,18 +9,21 @@ import CartContainer from "./Components/Pages/Cart/Cart.container";
 import CartContextProvider from "./Context/CartContext";
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
         <CartContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignIn></SignIn>} />
-            <Route path="/sign-up" element={<SignUp></SignUp>} />
 
             <Route element={<Layout />}>
               <Route
                 path="/products"
+                element={<ProductsContainer></ProductsContainer>}
+              />
+              <Route
+                path="/favs"
                 element={<ProductsContainer></ProductsContainer>}
               />
               <Route

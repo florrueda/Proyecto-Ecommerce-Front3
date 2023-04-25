@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 
-const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
+const UpdateProduct = ({ handleSubmit, productUpdated, setProductUpdated }) => {
   return (
     <div>
       <Container maxWidth="xs">
@@ -21,9 +21,11 @@ const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
             id="name"
             label="Nombre del producto"
             name="name"
-            value={productUpdated.name}
+            defaultValue={productUpdated?.name}
             autoFocus
-            onChange={handleChange}
+            onChange={(e) =>
+              setProductUpdated({ ...productUpdated, name: e.target.value })
+            }
           />
           <TextField
             margin="normal"
@@ -32,9 +34,11 @@ const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
             id="price"
             label="Precio del producto"
             name="price"
-            value={productUpdated.price}
+            defaultValue={productUpdated?.price}
             autoFocus
-            onChange={handleChange}
+            onChange={(e) =>
+              setProductUpdated({ ...productUpdated, price: e.target.value })
+            }
           />
           <TextField
             margin="normal"
@@ -43,9 +47,11 @@ const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
             id="stock"
             label="Stock del producto"
             name="stock"
-            value={productUpdated.stock}
+            defaultValue={productUpdated?.stock}
             autoFocus
-            onChange={handleChange}
+            onChange={(e) =>
+              setProductUpdated({ ...productUpdated, stock: e.target.value })
+            }
           />
           <TextField
             margin="normal"
@@ -54,9 +60,11 @@ const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
             id="img"
             label="Imagen del producto"
             name="img"
-            value={productUpdated.img}
+            defaultValue={productUpdated?.img}
             autoFocus
-            onChange={handleChange}
+            onChange={(e) =>
+              setProductUpdated({ ...productUpdated, img: e.target.value })
+            }
           />
           <Button
             type="submit"
@@ -64,7 +72,7 @@ const UpdateProduct = ({ handleChange, handleSubmit, productUpdated }) => {
             variant="contained"
             sx={{ mt: 3, mb: 2, backgroundColor: "#3E6765" }}
           >
-            Editar
+            Aceptar cambios
           </Button>
         </Box>
       </Container>

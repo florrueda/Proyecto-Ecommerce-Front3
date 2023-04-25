@@ -1,24 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import ProductDetail from './ProductDetail';
 import {useParams} from 'react-router-dom'
-import { getProductById } from "../../../services/ProductsService";
+import { getDoc, collection, doc  } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 const ProductDetailContainer = () => {
 
     const {id} = useParams();
     const [product, setProduct] = useState({})
-    const [isChanged, setIsChanged] = useState(false)
+
+    let refCollection = collection(db, "products");
+    let refDoc = doc(refCollection, id)
 
     useEffect(() => {
-        setIsChanged(false)
-        getProductById(id)
-        .then(res => setProduct(res.data))
-    }, [isChanged]);
 
+    getDoc(refDoc).then((res) => {
+      setProduct({
+        ...res.data(),
+        id: res.id,
+      });
+    });
+  }, []);
 
     return (
         <div>
-            <ProductDetail product={product} setIsChanged={setIsChanged} />
+            <ProductDetail product={product}/>
         </div>
     );
 }

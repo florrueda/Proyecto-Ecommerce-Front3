@@ -22,17 +22,15 @@ const Navbar = () => {
         <NavLink to="/products" className="navlink">
           Productos
         </NavLink>
+        <NavLink to="/favs" className="navlink">
+          Favoritos
+        </NavLink>
         <NavLink to="/cart" className="navlink-cart">
-            Carrito
-            <div className="navlink-icon">
+          Carrito
+          <div className="navlink-icon">
             {state.totalQuantity}
             <ShoppingCartIcon />
-            </div>
-            
-        </NavLink>
-
-        <NavLink to="/sign-in" className="navlink">
-          Iniciar sesion
+          </div>
         </NavLink>
       </div>
     </div>
