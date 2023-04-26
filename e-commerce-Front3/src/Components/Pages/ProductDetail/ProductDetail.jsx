@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 import Counter from "../../Common/Counter/Counter";
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, deleteProductById }) => {
   const [showForm, setShowForm] = useState(false);
 
   const showFormFunction = () => {
