@@ -16,7 +16,7 @@ const ProductDetail = ({ product }) => {
     <div>
       <ThemeProvider theme={themeContext}>
         <Typography gutterBottom variant="h2" component="div" align="center">
-          Product Detail
+          Detalle de producto
         </Typography>
         <Container
           maxWidth="sm"

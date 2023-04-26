@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Products from "./Products";
 import { db } from "../../../firebaseConfig";
-import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore'
-import Swal from 'sweetalert2'
+import { getDocs, collection } from 'firebase/firestore'
 import { FavsContext } from "../../../Context/FavsContext";
 
 

@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../../Common/ProductCard/ProductCard";
 import { Button, Grid, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 
 const Products = ({ items, dispatch, favs }) => {
+  const navigate = useNavigate();
 
   return (
     <div>
-      <ThemeProvider theme={ themeContext}>
+      <ThemeProvider theme={themeContext}>
         <div
           style={{
             display: "flex",
@@ -18,22 +19,18 @@ const Products = ({ items, dispatch, favs }) => {
             margin: "1rem",
           }}
         >
-          <Link to="/create-product" style={{
-            textDecoration: "none",
-          }}>
-            <Button variant="contained">Crear nuevo producto</Button>
-          </Link>
+          <Button
+            variant="contained"
+            onClick={() => navigate(`/create-product`)}
+          >
+            Crear nuevo producto
+          </Button>
         </div>
 
         <div>
-        <Typography
-              gutterBottom
-              variant="h2"
-              component="div"
-              align="center"
-            >
-              Products
-            </Typography>
+          <Typography gutterBottom variant="h2" component="div" align="center">
+            Productos
+          </Typography>
           <Grid container spacing={2}>
             {items.map((e) => (
               <Grid item xs={4} md={3} key={e.id}>

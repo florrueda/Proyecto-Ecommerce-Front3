@@ -17,9 +17,6 @@ export const themeContext = createTheme({
             dark: "#979e95",
           },
         },
-        button: {
-          fontSize: 10,
-        },
       });
 
 

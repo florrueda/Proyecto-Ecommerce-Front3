@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import ProductDetail from './ProductDetail';
 import {useParams} from 'react-router-dom'
-import { getDoc, collection, doc  } from "firebase/firestore";
+import { getDoc, collection, doc, deleteDoc  } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
+import Swal from 'sweetalert2'
 
 const ProductDetailContainer = () => {
 
