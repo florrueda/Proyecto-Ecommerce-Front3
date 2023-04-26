@@ -2,6 +2,7 @@ import React from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 
 const UpdateProduct = ({ handleSubmit, productUpdated, setProductUpdated }) => {
+
   return (
     <div>
       <Container maxWidth="xs">
@@ -74,6 +75,7 @@ const UpdateProduct = ({ handleSubmit, productUpdated, setProductUpdated }) => {
           >
             Aceptar cambios
           </Button>
+          
         </Box>
       </Container>
     </div>

@@ -36,7 +36,7 @@ const ProductDetail = ({ product, deleteProductById }) => {
             >
               Editar
             </Button>
-            <Button onClick={() => deleteProductById(e.id)} fullWidth variant="contained" sx={{mt: 1}}>
+            <Button onClick={() => deleteProductById(product.id)} fullWidth variant="contained" sx={{mt: 1}}>
               Eliminar producto
             </Button>
           </div>

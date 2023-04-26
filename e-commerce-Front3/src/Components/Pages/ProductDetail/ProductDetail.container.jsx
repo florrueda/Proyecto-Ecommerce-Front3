@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ProductDetail from './ProductDetail';
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import { getDoc, collection, doc, deleteDoc  } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import Swal from 'sweetalert2'
+import { FavsContext } from "../../../Context/FavsContext";
 
 const ProductDetailContainer = () => {
+
+    const navigate = useNavigate();
+
+    const {dispatch} = useContext(FavsContext)
 
     const {id} = useParams();
     const [product, setProduct] = useState({})
@@ -34,6 +39,8 @@ const ProductDetailContainer = () => {
       if (result.isConfirmed) {
         Swal.fire('El producto se elimino con exito', '', 'success')
         deleteDoc(doc(db, "products", id));
+        dispatch({ type: "HANDLE_FAVORITE", payload: doc(db, "products", id) })
+        navigate('/products')
       } else if (result.isDenied) {
         Swal.fire('El producto no ha sido eliminado', '', 'info')
       }
