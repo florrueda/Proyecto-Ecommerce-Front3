@@ -6,7 +6,7 @@ import { db } from "../../../firebaseConfig";
 import Swal from 'sweetalert2'
 import { FavsContext } from "../../../Context/FavsContext";
 
-const ProductDetailContainer = () => {
+const ProductDetailContainer = ({user}) => {
 
     const navigate = useNavigate();
 
@@ -50,7 +50,7 @@ const ProductDetailContainer = () => {
 
     return (
         <div>
-            <ProductDetail product={product} deleteProductById={deleteProductById}/>
+            <ProductDetail user={user} product={product} deleteProductById={deleteProductById}/>
         </div>
     );
 }

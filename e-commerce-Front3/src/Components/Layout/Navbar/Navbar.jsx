@@ -5,7 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./Navbar.css";
 import { CartContext } from "../../../Context/CartContext";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const { state, dispatch } = useContext(CartContext);
 
   useEffect(() => {
@@ -32,6 +32,13 @@ const Navbar = () => {
             <ShoppingCartIcon />
           </div>
         </NavLink>
+        {user ? (
+          <Button onClick={() => signOut(auth)}>Cerrar sesion</Button>
+        ) : (
+          <NavLink to="/sign-up" className="navlink">
+            Iniciar sesion
+          </NavLink>
+        )}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 import Counter from "../../Common/Counter/Counter";
 
-const ProductDetail = ({ product, deleteProductById }) => {
+const ProductDetail = ({ product, deleteProductById, user }) => {
   const [showForm, setShowForm] = useState(false);
 
   const showFormFunction = () => {
@@ -27,18 +27,26 @@ const ProductDetail = ({ product, deleteProductById }) => {
             <h2>{product.name}</h2>
             <h2>$ {product.price}</h2>
             <h2>Cantidad en stock: {product.stock}</h2>
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              onClick={() => showFormFunction()}
-            >
-              Editar
-            </Button>
-            <Button onClick={() => deleteProductById(product.id)} fullWidth variant="contained" sx={{mt: 1}}>
-              Eliminar producto
-            </Button>
+            {user.rol === "admin" ? (
+              <>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  onClick={() => showFormFunction()}
+                >
+                  Editar
+                </Button>
+                <Button
+                  onClick={() => deleteProductById(product.id)}
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 1 }}
+                >
+                  Eliminar producto
+                </Button>
+              </>
+            ) : null}
           </div>
         </Container>
         <Counter product={product}></Counter>

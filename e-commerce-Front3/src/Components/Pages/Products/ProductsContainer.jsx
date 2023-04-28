@@ -5,7 +5,7 @@ import { getDocs, collection } from 'firebase/firestore'
 import { FavsContext } from "../../../Context/FavsContext";
 
 
-const ProductsContainer = () => {
+const ProductsContainer = ({user}) => {
   const [items, setItems] = useState([]);
   
   const {state, dispatch} = useContext(FavsContext)
@@ -28,6 +28,7 @@ const ProductsContainer = () => {
 
   return (
     <Products
+      user={user}
       items={items}
       favs={state.favs}
       dispatch={dispatch}
