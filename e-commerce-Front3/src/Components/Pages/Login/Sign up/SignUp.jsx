@@ -29,7 +29,6 @@ const SignUp = () => {
     ).then((usuarioFirebase) => {
       return usuarioFirebase;
     });
-    console.log(infoUsuario.user.uid);
     const docRef = doc(db,`users/${infoUsuario.user.uid}`)
     setDoc(docRef, {email, rol})
   }

@@ -15,7 +15,6 @@ const ProductsContainer = ({user}) => {
     getDocs(refCollection)
     .then((res) => {
       const products = res.docs.map(product => {
-        console.log(product);
         return {
           ...product.data(),
           id: product.id

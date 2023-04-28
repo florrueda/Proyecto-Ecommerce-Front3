@@ -28,7 +28,7 @@ const SignIn =() => {
         password:'',
     },
     onSubmit: (data) => {
-        signInWithEmailAndPassword(auth, data)
+        signInWithEmailAndPassword(auth, data.email, data.password)
         navigate('/products')
     },
     validationSchema: Yup.object().shape({

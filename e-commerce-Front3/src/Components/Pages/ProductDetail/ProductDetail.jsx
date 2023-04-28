@@ -27,7 +27,8 @@ const ProductDetail = ({ product, deleteProductById, user }) => {
             <h2>{product.name}</h2>
             <h2>$ {product.price}</h2>
             <h2>Cantidad en stock: {product.stock}</h2>
-            {user.rol === "admin" ? (
+
+            {user === null ? null : user.rol === "admin" ? (
               <>
                 <Button
                   type="submit"

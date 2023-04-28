@@ -19,12 +19,14 @@ const Products = ({ items, dispatch, favs, user }) => {
             margin: "1rem",
           }}
         >
-        {user.rol === 'admin' ?  (<Button
+        {user === null ? null : user.rol === 'admin' ? (<Button
             variant="contained"
             onClick={() => navigate(`/create-product`)}
+            display='none'
           >
             Crear nuevo producto
-          </Button>) : null}
+          </Button>) : null }
+          
         </div>
 
         <div>
