@@ -5,7 +5,7 @@ import { getDocs, collection } from 'firebase/firestore'
 import { FavsContext } from "../../../Context/FavsContext";
 
 
-const ProductsContainer = () => {
+const ProductsContainer = ({user}) => {
   const [items, setItems] = useState([]);
   
   const {state, dispatch} = useContext(FavsContext)
@@ -15,7 +15,6 @@ const ProductsContainer = () => {
     getDocs(refCollection)
     .then((res) => {
       const products = res.docs.map(product => {
-        console.log(product);
         return {
           ...product.data(),
           id: product.id
@@ -28,6 +27,7 @@ const ProductsContainer = () => {
 
   return (
     <Products
+      user={user}
       items={items}
       favs={state.favs}
       dispatch={dispatch}

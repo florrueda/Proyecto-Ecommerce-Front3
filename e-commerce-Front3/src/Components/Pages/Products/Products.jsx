@@ -5,7 +5,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 
-const Products = ({ items, dispatch, favs }) => {
+const Products = ({ items, dispatch, favs, user }) => {
   const navigate = useNavigate();
 
   return (
@@ -19,12 +19,14 @@ const Products = ({ items, dispatch, favs }) => {
             margin: "1rem",
           }}
         >
-          <Button
+        {user === null ? null : user.rol === 'admin' ? (<Button
             variant="contained"
             onClick={() => navigate(`/create-product`)}
+            display='none'
           >
             Crear nuevo producto
-          </Button>
+          </Button>) : null }
+          
         </div>
 
         <div>
