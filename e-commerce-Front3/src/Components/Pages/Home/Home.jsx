@@ -12,12 +12,12 @@ const Home = () => {
 
   return (
     <div className="home">
-      <img src={logo} style={{ width: "30%" }}></img>
+      <img src={logo}></img>
       <ThemeProvider theme={themeContext}>
         <Typography gutterBottom variant="h2" align="center">
           Bienvenido a SucuLove
         </Typography>
-        <Typography variant="h4">
+        <Typography variant="h4" align="center">
           Aca vas a encontrar las suculentas mas lindas{" "}
           <FavoriteIcon style={{ fontSize: "1rem" }} />
         </Typography>

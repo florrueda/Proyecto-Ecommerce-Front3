@@ -33,9 +33,9 @@ const Products = ({ items, dispatch, favs, user }) => {
           <Typography gutterBottom variant="h2" component="div" align="center">
             Productos
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={1} columns={{ xs: 2, sm: 4, md: 12 }}>
             {items.map((e) => (
-              <Grid item xs={4} md={3} key={e.id}>
+              <Grid item xs={2} sm={2} md={4} key={e.id}>
                 <ProductCard
                   e={e}
                   favs={favs}

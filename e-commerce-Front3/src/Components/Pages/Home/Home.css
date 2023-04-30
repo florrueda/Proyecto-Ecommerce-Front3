@@ -4,8 +4,14 @@
     align-items: center;
 }
 
-.home-button, .home-button button {
-    text-decoration: none;
-    margin: 1rem;
-    font-size: 1rem;
+img {
+    width: 30%
+}
+
+@media (max-width: 800px) {
+  
+    img {
+        width: 60%
+    }
+
 }

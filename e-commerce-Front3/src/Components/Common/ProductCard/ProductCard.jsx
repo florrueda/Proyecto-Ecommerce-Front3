@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import "./ProductCard.css";
 import Counter from "../Counter/Counter";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
