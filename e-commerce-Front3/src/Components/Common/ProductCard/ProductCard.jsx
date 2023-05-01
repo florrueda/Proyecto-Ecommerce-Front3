@@ -20,8 +20,8 @@ const ProductCard = ({ e, dispatch, favs }) => {
   return (
     <div>
       <ThemeProvider theme={themeContext}>
-        <Card >
-          <CardMedia component="img" alt="" height="300" image={e.img} />
+        <Card sx={{margin: '1rem'}}>
+          <CardMedia component="img" alt="" sx={{height:"300px"}}  image={e.img} />
           <IconButton
             aria-label="add to favorites"
             onClick={() => dispatch({ type: "HANDLE_FAVORITE", payload: e })}

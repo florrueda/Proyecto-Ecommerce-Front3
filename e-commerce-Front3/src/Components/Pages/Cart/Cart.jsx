@@ -37,10 +37,10 @@ const Cart = ({ state, dispatch, limpiarCarrito }) => {
           </Button>
         </div>
         <Container align="center">
-          <TableContainer component={Paper} sx={{ width: 800 }}>
+          <TableContainer component={Paper} sx={{ width: {xs: 270, md: 800}  }}>
             <Table
-              sx={{ minWidth: 650 }}
-              size="small"
+              sx={{ minWidth: {xs: 0, md: 650} }}
+              size='small'
               aria-label="a dense table"
             >
               <TableHead>
