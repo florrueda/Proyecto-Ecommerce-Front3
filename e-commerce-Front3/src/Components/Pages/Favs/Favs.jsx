@@ -14,9 +14,9 @@ const Favs = ({ favs, dispatch }) => {
         <Typography gutterBottom variant="h2" component="div" align="center">
           Favoritos
         </Typography>
-        <Grid container spacing={2}>
+        <Grid container spacing={1} columns={{ xs: 2, sm: 4, md: 12 }}>
         {favs.map((fav) => (
-              <Grid item xs={4} md={3} key={fav.id}>
+              <Grid item xs={2} sm={2} md={4} key={fav.id}>
                 <ProductCard
                   e={fav}
                   favs={favs}
