@@ -17,9 +17,18 @@ import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Swal from "sweetalert2";
 
 const Cart = ({ state, dispatch, limpiarCarrito }) => {
   const navigate = useNavigate();
+
+  const deleteProduct = (id) => {
+    dispatch({
+      type: "DELETE_BY_ID",
+      payload: id,
+    });
+    Swal.fire("Se elimino el producto del carrito!", "", "info");
+  };
 
   return (
     <div>
@@ -82,14 +91,7 @@ const Cart = ({ state, dispatch, limpiarCarrito }) => {
                     <TableCell>{product.price * product.quantity}</TableCell>
                     <TableCell>
                       <IconButton>
-                        <DeleteIcon
-                          onClick={() =>
-                            dispatch({
-                              type: "DELETE_BY_ID",
-                              payload: product.id,
-                            })
-                          }
-                        ></DeleteIcon>
+                        <DeleteIcon onClick={()=> deleteProduct(product.id)}></DeleteIcon>
                       </IconButton>
                     </TableCell>
                   </TableRow>
