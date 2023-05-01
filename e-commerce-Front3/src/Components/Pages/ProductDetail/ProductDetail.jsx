@@ -4,6 +4,7 @@ import { Button, Container, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 import Counter from "../../Common/Counter/Counter";
+import './ProductDetail.css'
 
 const ProductDetail = ({ product, deleteProductById, user }) => {
   const [showForm, setShowForm] = useState(false);
@@ -20,12 +21,13 @@ const ProductDetail = ({ product, deleteProductById, user }) => {
         </Typography>
         <Container
           maxWidth="sm"
-          style={{ display: "flex", justifyContent: " space-around " }}
+          // id='detail-container'
+          sx={{ display: "flex", justifyContent: " space-around", flexDirection:{xs: 'column', md: 'row'}, alignItems:'center' }}
         >
           <img src={product.img} style={{ width: 200, height: "auto" }}></img>
           <div>
-            <h2>{product.name}</h2>
-            <h2>$ {product.price}</h2>
+            <h2 align="center">{product.name}</h2>
+            <h2 align="center">$ {product.price}</h2>
             <h2>Cantidad en stock: {product.stock}</h2>
 
             {user === null ? null : user.rol === "admin" ? (

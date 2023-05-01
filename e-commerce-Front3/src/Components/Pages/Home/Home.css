@@ -4,13 +4,13 @@
     align-items: center;
 }
 
-img {
+#home-img {
     width: 30%
 }
 
 @media (max-width: 800px) {
   
-    img {
+    #home-img {
         width: 60%
     }
 

@@ -6,10 +6,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Container, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Container,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { themeContext } from "../../../Context/theme";
 import { useNavigate } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Cart = ({ state, dispatch, limpiarCarrito }) => {
   const navigate = useNavigate();
@@ -37,18 +44,23 @@ const Cart = ({ state, dispatch, limpiarCarrito }) => {
           </Button>
         </div>
         <Container align="center">
-          <TableContainer component={Paper} sx={{ width: {xs: 270, md: 800}  }}>
+          <TableContainer
+            component={Paper}
+            sx={{ width: { xs: 270, md: 800 } }}
+          >
             <Table
-              sx={{ minWidth: {xs: 0, md: 650} }}
-              size='small'
+              sx={{ minWidth: { xs: 0, md: 650 } }}
+              size="small"
               aria-label="a dense table"
             >
               <TableHead>
                 <TableRow>
+                  <TableCell>Imagen</TableCell>
                   <TableCell>Producto</TableCell>
                   <TableCell>Precio</TableCell>
                   <TableCell>Cantidad</TableCell>
                   <TableCell>Total</TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -57,21 +69,29 @@ const Cart = ({ state, dispatch, limpiarCarrito }) => {
                     key={product.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
-                      {product.name}
+                    <TableCell>
+                      <Avatar
+                        src={product.img}
+                        sx={{ width: 76, height: 76 }}
+                      />
                     </TableCell>
+                    <TableCell>{product.name}</TableCell>
                     <TableCell>{product.price}</TableCell>
                     <TableCell>{product.quantity}</TableCell>
 
                     <TableCell>{product.price * product.quantity}</TableCell>
-                    <Button
-                      variant="outlined"
-                      onClick={() =>
-                        dispatch({ type: "DELETE_BY_ID", payload: product.id })
-                      }
-                    >
-                      Eliminar producto
-                    </Button>
+                    <TableCell>
+                      <IconButton>
+                        <DeleteIcon
+                          onClick={() =>
+                            dispatch({
+                              type: "DELETE_BY_ID",
+                              payload: product.id,
+                            })
+                          }
+                        ></DeleteIcon>
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

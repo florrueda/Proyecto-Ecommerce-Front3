@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <img src={logo}></img>
+      <img src={logo} id='home-img'></img>
       <ThemeProvider theme={themeContext}>
         <Typography gutterBottom variant="h2" align="center">
           Bienvenido a SucuLove
