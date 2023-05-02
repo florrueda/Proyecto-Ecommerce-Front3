@@ -1,14 +1,10 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import {
-  Avatar,
+  Box,
   Button,
+  Card,
+  CardContent,
+  CardMedia,
   Container,
   IconButton,
   Typography,
@@ -53,52 +49,65 @@ const Cart = ({ state, dispatch, limpiarCarrito }) => {
           </Button>
         </div>
         <Container align="center">
-          <TableContainer
-            component={Paper}
-            sx={{ width: { xs: 270, md: 800 } }}
-          >
-            <Table
-              sx={{ minWidth: { xs: 0, md: 650 } }}
-              size="small"
-              aria-label="a dense table"
+          {state.cart.map((product) => (
+            <Card
+              sx={{ display: "flex", margin: "1rem", maxWidth: "sm" }}
+              key={product.name}
             >
-              <TableHead>
-                <TableRow>
-                  <TableCell>Imagen</TableCell>
-                  <TableCell>Producto</TableCell>
-                  <TableCell>Precio</TableCell>
-                  <TableCell>Cantidad</TableCell>
-                  <TableCell>Total</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {state.cart.map((product) => (
-                  <TableRow
-                    key={product.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              <CardMedia
+                component="img"
+                sx={{ width: 100 }}
+                image={product.img}
+                alt=""
+              />
+              <CardContent
+                sx={{ display: "flex", flexDirection: "column", flex: "1" }}
+              >
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Typography component="div" variant="h6">
+                    {product.name}
+                  </Typography>
+                  <IconButton>
+                    <DeleteIcon
+                      onClick={() => deleteProduct(product.id)}
+                    ></DeleteIcon>
+                  </IconButton>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginTop: "2rem",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      maxWidth: '100px'
+                    }}
                   >
-                    <TableCell>
-                      <Avatar
-                        src={product.img}
-                        sx={{ width: 76, height: 76 }}
-                      />
-                    </TableCell>
-                    <TableCell>{product.name}</TableCell>
-                    <TableCell>{product.price}</TableCell>
-                    <TableCell>{product.quantity}</TableCell>
-
-                    <TableCell>{product.price * product.quantity}</TableCell>
-                    <TableCell>
-                      <IconButton>
-                        <DeleteIcon onClick={()=> deleteProduct(product.id)}></DeleteIcon>
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                    <Button
+                      sx={{ minWidth: '30px' }}
+                      onClick={() => reduceCounter()}
+                    >
+                      -
+                    </Button>
+                    <Typography variant="h6" sx={{ display: "flex", alignItems: "center" }}>{product.quantity}</Typography>
+                    <Button
+                      sx={{ minWidth: '30px' }}
+                      onClick={() => increaseCounter()}
+                    >
+                      +
+                    </Button>
+                  </Box>
+                  <Typography component="div" variant="h6">
+                    ${product.price * product.quantity}
+                  </Typography>
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
           <div>
             <h3>El total del carrito es: {state.totalPrice}</h3>
             <Button
