@@ -18,10 +18,9 @@ const ProductCard = ({ e, dispatch, favs }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
       <ThemeProvider theme={themeContext}>
-        <Card sx={{ maxWidth: 380 }}>
-          <CardMedia component="img" alt="" height="250"  image={e.img} />
+        <Card sx={{ maxWidth: 350 }}>
+          <CardMedia component="img" alt="" height="300" image={e.img} />
           <IconButton
             aria-label="add to favorites"
             onClick={() => dispatch({ type: "HANDLE_FAVORITE", payload: e })}
@@ -58,7 +57,6 @@ const ProductCard = ({ e, dispatch, favs }) => {
           <Counter product={e}></Counter>
         </Card>
       </ThemeProvider>
-    </div>
   );
 };
 
