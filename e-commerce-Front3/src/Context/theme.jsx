@@ -17,6 +17,12 @@ export const themeContext = createTheme({
             dark: "#979e95",
           },
         },
+        components: {
+          TextField: {
+            margin: "10px",
+            
+          }
+        }
       });
 
 

@@ -14,8 +14,8 @@ import * as Yup from 'yup'
 import {auth, db} from '../../../../firebaseConfig'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc} from 'firebase/firestore'
-
-const theme = createTheme();
+import '../Login.css'
+import { themeContext } from "../../../../Context/theme";
 
 const SignUp = () => {
 
@@ -54,7 +54,7 @@ const SignUp = () => {
 })
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeContext}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -66,7 +66,7 @@ const SignUp = () => {
         >
           <img src={logo} style={{ width: "50%" }}></img>
           <Typography component="h1" variant="h5">
-            Sign up
+            Registrate
           </Typography>
           <Box
             component="form"
@@ -81,7 +81,7 @@ const SignUp = () => {
                   name="firstName"
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Nombre"
                   onChange={handleChange}
               error={errors.firstName ? true : false}
               helperText={errors.firstName}
@@ -93,7 +93,7 @@ const SignUp = () => {
                 <TextField
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Apellido"
                   name="lastName"
                   autoComplete="family-name"
                   onChange={handleChange}
@@ -106,7 +106,7 @@ const SignUp = () => {
                 <TextField
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Correo Electronico"
                   name="email"
                   autoComplete="email"
                   onChange={handleChange}
@@ -120,7 +120,7 @@ const SignUp = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Contraseña"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -137,12 +137,12 @@ const SignUp = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Registrate
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link to="/sign-in" variant="body2">
-                  Already have an account? Sign in
+                  Ya tienes una cuenta? Inicia Sesion
                 </Link>
               </Grid>
             </Grid>

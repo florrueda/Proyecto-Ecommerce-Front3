@@ -8,15 +8,15 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import logo from '../../../../assets/SucuLove-logos/SucuLove-logos_transparent.png'
 import {Link, useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import {auth} from '../../../../firebaseConfig'
 import { signInWithEmailAndPassword } from "firebase/auth";
-
-const theme = createTheme();
+import { themeContext } from "../../../../Context/theme";
+import '../Login.css'
 
 const SignIn =() => {
 
@@ -39,7 +39,7 @@ const SignIn =() => {
 })
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeContext}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -51,7 +51,7 @@ const SignIn =() => {
         >
           <img src={logo} style={{width: '50%'}}></img>
           <Typography component="h1" variant="h5">
-            Sign in
+            Iniciar Sesion
           </Typography>
           <Box
             component="form"
@@ -63,7 +63,7 @@ const SignIn =() => {
               margin="normal"
               fullWidth
               id="email"
-              label="Email Address"
+              label="Correo electronico"
               name="email"
               autoComplete="email"
               autoFocus
@@ -76,7 +76,7 @@ const SignIn =() => {
               margin="normal"
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -85,27 +85,27 @@ const SignIn =() => {
               helperText={errors.password}
               value={values.password}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Iniciar Sesion
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Te olvidaste la contraseña?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
-                <Link to="/sign-up" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link to="/sign-up" variant="body2" >
+                  No tienes cuenta? Registrate
                 </Link>
               </Grid>
             </Grid>
