@@ -22,7 +22,7 @@ const pages = [
   { to: "/", name: "Inicio" },
   { to: "/products", name: "Productos" },
   { to: "/favs", name: "Favoritos" },
-  { to: "/cart", name: "Carrito" },
+  // { to: "/cart", name: "Carrito" },
 ];
 
 function Navbar({ user }) {
@@ -111,13 +111,13 @@ function Navbar({ user }) {
                 <NavLink to="/favs" className="navlink">
                   Favoritos
                 </NavLink>
-                <NavLink to="/cart" className="navlink-cart">
+                {/* <NavLink to="/cart" className="navlink-cart">
                   Carrito
                   <div className="navlink-icon">
                     {state.totalQuantity}
                     <ShoppingCartIcon />
                   </div>
-                </NavLink>
+                </NavLink> */}
                 {user ? (
                   <Button
                     color="secondary"

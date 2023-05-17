@@ -54,7 +54,7 @@ const ProductCard = ({ e, dispatch, favs }) => {
               Ver detalle
             </Button>
           </CardActions>
-          <Counter product={e}></Counter>
+          {/* <Counter product={e}></Counter> */}
         </Card>
       </ThemeProvider>
   );

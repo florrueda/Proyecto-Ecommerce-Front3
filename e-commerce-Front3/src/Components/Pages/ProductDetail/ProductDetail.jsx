@@ -52,7 +52,7 @@ const ProductDetail = ({ product, deleteProductById, user }) => {
             ) : null}
           </div>
         </Container>
-        <Counter product={product}></Counter>
+        {/* <Counter product={product}></Counter> */}
         {showForm ? (
           <UpdateProductContainer
             product={product}
