@@ -19,7 +19,7 @@ const ProductCard = ({ e, dispatch, favs }) => {
 
   return (
       <ThemeProvider theme={themeContext}>
-        <Card sx={{ maxWidth: 350 }}>
+        <Card sx={{ maxWidth: 350, margin: 1 }}>
           <CardMedia component="img" alt="" height="300" image={e.img} />
           <IconButton
             aria-label="add to favorites"
