@@ -104,7 +104,7 @@ const SignIn =() => {
                 </Link>
               </Grid> */}
               <Grid item>
-                <Link to="/sign-up" variant="body2" >
+                <Link to="/sign-up" variant="body2" className="login-links" >
                   No tienes cuenta? Registrate
                 </Link>
               </Grid>

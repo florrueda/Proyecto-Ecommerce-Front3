@@ -141,7 +141,7 @@ const SignUp = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/sign-in" variant="body2">
+                <Link to="/sign-in" variant="body2" className="login-links">
                   Ya tienes una cuenta? Inicia Sesion
                 </Link>
               </Grid>
