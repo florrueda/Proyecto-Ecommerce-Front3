@@ -15,6 +15,8 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { CartContext } from "../../../Context/CartContext";
 import { useEffect, useState, useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from '../../../firebaseConfig'
 
 const pages = [
   { to: "/", name: "Inicio" },
